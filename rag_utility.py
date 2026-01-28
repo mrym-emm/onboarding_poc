@@ -4,9 +4,11 @@ import os
 # for accessing the environment var:- apikeys etc
 from dotenv import load_dotenv
 
-from langchain_community.document_loaders import (
-    UnstructuredPDFLoader,
-)  # read the files the user is loading
+# from langchain_community.document_loaders import (
+#     UnstructuredPDFLoader,
+# )  # read the files the user is loading
+
+from langchain_community.document_loaders import PyPDFLoader
 
 # used to split the texts into smaller chunks
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -41,7 +43,9 @@ llm = ChatGroq(model="llama-3.3-70b-versatile", temperature=0.5)
 def process_document_to_chroma_db(file_name):
     # load the pdf document using UnstructuredPDFLoader
     # this will save the pdf in the work dir
-    loader = UnstructuredPDFLoader(f"{working_dir}/{file_name}")
+    loader = PyPDFLoader(
+        f"{working_dir}/{file_name}",
+    )
     documents = loader.load()
 
     # split texts into embeddings, member ni returns an object
