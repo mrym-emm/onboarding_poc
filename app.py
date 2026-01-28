@@ -11,7 +11,9 @@ working_dir = os.path.dirname(os.path.abspath((__file__)))
 st.title("Simple Doc Answering App")
 
 # file uploader widget
-uploaded_file = st.file_uploader("Upload a PDF file", type=["pdf"])
+uploaded_file = st.file_uploader(
+    "Upload a PDF file (best perf: less than 10pages)", type=["pdf"]
+)
 
 
 if uploaded_file is not None:
