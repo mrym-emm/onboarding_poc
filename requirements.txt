@@ -11,4 +11,6 @@ langchain-unstructured
 langchain-chroma
 langchain-groq
 langchain-classic
+opencv-python-headless>=4.9
+
 
